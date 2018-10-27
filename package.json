@@ -135,7 +135,8 @@
       "react/jsx-no-target-blank": 0,
       "react/require-extension": 0,
       "react/self-closing-comp": 0,
-      "require-yield": 0
+      "require-yield": 0,
+      "linebreak-style": 0
     },
     "settings": {
       "import/resolver": {
@@ -200,7 +201,7 @@
     "react-router-redux": "4.0.5",
     "react-router-scroll": "0.2.1",
     "redux": "3.5.2",
-    "redux-immutable": "3.0.7",
+    "redux-immutable": "3.0.8",
     "redux-saga": "0.11.0",
     "reselect": "2.5.3",
     "sanitize.css": "4.1.0",

@@ -6,22 +6,21 @@ import { requestTopicsSucceded, requestTopicsFailed } from './actions';
 
 export function fetchTopicsFromServer() {
   return fetch('http://localhost:3000/api/topics')
-    .then(res => res.json())
+    .then(res => res.json());
 }
 
-function* fetchTopics()  {
+function* fetchTopics() {
   try {
-    const topics = yield call(fetchTopicsFromServer)
-    yield put(requestTopicsSucceded(topics))  
+    const topics = yield call(fetchTopicsFromServer);
+    yield put(requestTopicsSucceded(topics));
   } catch (e) {
-    put(requestTopicsFailed(e))
+    put(requestTopicsFailed(e));
   }
 }
 
 export function* fetchTopicsSaga() {
-  yield takeLatest(REQUEST_TOPICS, fetchTopics)
+  yield takeLatest(REQUEST_TOPICS, fetchTopics);
 }
-
 
 
 export default [
