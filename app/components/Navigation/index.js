@@ -5,22 +5,34 @@
 */
 
 import React from 'react';
-import AppBar from '../AppBar';
+
 
 import styles from './styles.css';
+import AppBar from '../AppBar';
+import Drawer from '../Drawer';
 
-function Navigation({ topics, selectTopic }) {
+function Navigation({ topics, selectTopic, toggleDrawer, isDrawerOpen, email }) {
   return (
     <div className={styles.navigation}>
-      <AppBar />
-     {topics.map(t => <div key={t.name} onClick={() => { selectTopic(t); }}>{t.name}</div>)}
+      <AppBar
+        toggleDrawer={toggleDrawer}
+        email={email}
+      />
+      <Drawer
+        items={topics}
+        selectItem={selectTopic}
+        itemLabelAttr="name"
+        itemKeyAttr="name"
+        isDrawerOpen={isDrawerOpen}
+      />
     </div>
   );
 }
 
-export default Navigation;
-
 Navigation.propTypes = {
+  email: React.PropTypes.string,
+  isDrawerOpen: React.PropTypes.bool.isRequired,
+  toggleDrawer: React.PropTypes.func.isRequired,
   topics: React.PropTypes.arrayOf(
     React.PropTypes.shape({
       name: React.PropTypes.string.isRequired,
@@ -29,3 +41,5 @@ Navigation.propTypes = {
   ).isRequired,
   selectTopic: React.PropTypes.func.isRequired,
 };
+
+export default Navigation;
